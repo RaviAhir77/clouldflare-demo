@@ -104,8 +104,9 @@
             messageDiv.className = ''; // Clear previous classes
 
             try {
-                // Attempt to "login" by checking if the user exists via a GET request
-                const response = await fetch(`/user/${username}`, {
+                // Attempt to "login" by checking if the user exists via a GET request on the Cloudflare Worker
+                const workerUrl = `https://floral-cake-c2ce.floralc2ce.workers.dev/user/${username}`;
+                const response = await fetch(workerUrl, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
